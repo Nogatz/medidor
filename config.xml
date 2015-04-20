@@ -4,14 +4,20 @@
     id        = "com.phonegap.example"
     version   = "1.0.0">
 
-<name>PhoneGap Build Application</name>
+<name>Medidor Alcoolico</name>
+<icon src="beer.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="splash.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="splash.png" gap:platform="android" gap:density="mdpi" />
+<gap:splash src="splash.png" gap:platform="android" gap:density="hdpi" />
+<gap:splash src="splash.png" gap:platform="android" gap:density="xhdpi" />
+
 
 <description>
-A simple PhoneGap Build application.
+Um aplicativo para ver quanto você consegue beber.
 </description>
 
-<author href="https://example.com" email="you@example.com">
-Your Name
+<author href="https://facebook.com/leonardo.nogatz" email="leonardonogatz@gmail.com">
+Leonardo Notgaz
 </author>
 
 </widget>
