@@ -25,7 +25,7 @@
 		}
 
 	function erroDB(err){
-		console.log("error db");
+		console.log("error db" +  err.code);
 			alert('Problema com o banco de dados' + err.code );
 		}
 
@@ -63,6 +63,7 @@
 	function submitform(){
 		console.log("teste2");
 		db.transaction(insertDB, erroDB);
+				console.log("teste3");
 		$.mobile.changePage("#confirmacaocadastro", {reverse: false, transition:"slide"});
 		return false;
 		}
@@ -83,8 +84,10 @@
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
-    	<p><a href="#inciarnova">Iniciar bebedeira</a></p>	
-	    <p><a href="#listaultimas">Últimas</a></p>
+    <p>O medidor alcoolico mede quantos ml de alcool você consumiu em uma bebedeira.
+    Faz o calculo a partir da % de alcool que a bebida possui e quantos ml da bebida você ingeriu, assim você pode saber qual seu limite e sempre ficar nele.</p>
+	    <a href="#inciarnova" class="ui-btn ui-btn-b">Iniciar nova</a>
+   		<a href="#listaultimas" class="ui-btn ui-btn-b">Últimas</a>
 	</div><!-- /content -->
 
 	<div data-role="footer">
@@ -194,160 +197,41 @@
 
     
 <div data-role="page" id="listaultimas">
-		<h4>Últimas bebedeiras</h4>
-		<table data-role="table" id="table-column-toggle" data-mode="columntoggle" 			class="ui-responsive table-stroke">
-         <thead>
-           <tr>
-             <th data-priority="2">Data</th>
-             <th>Quantidade de alcool ingerida</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <th>01/01/2015</th>
-             <th>22ml</th>
-			</tr>
-           <tr>
-             <th>02/02/2015</th>
-             <th>33ml</th>
-			</tr>
-           <tr>
-             <th>03/03/2015</th>
-             <th>44ml</th>
-			</tr>
-          </tbody>  
-        
+	<div data-role="header">
+		<h1>Medidor alcoolico</h1>
+	</div><!-- /header -->
+
 	<div role="main" class="ui-content">
-            <a href="#topo" class="ui-btn ui-btn-inline">voltar</a>
-
+<table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+     <thead>
+       <tr>
+         <th data-priority="1">Data</th>
+         <th data-priority="2">Alcool ingerido em ml</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <th>1</th>
+         <td>74</td>
+       </tr>
+       <tr>
+         <th>2</th>
+         <td>64</td>
+       </tr>
+     </tbody>
+   </table>
 	</div><!-- /content -->
+	
 	<div data-role="footer">
+		<a href="#topo" class="ui-btn ui-btn-inline">voltar</a>
 	</div><!-- /footer -->
-</div><!-- /fim página listaultimas -->
-    
+</div><!-- /page fim pagina nova bebida -->
+   
 
 
 
-
-
-    
+   
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<div data-role="page" id="page">
-	<div data-role="header">
-		<h1>#Até cair...</h1>
-	</div>
-	<div data-role="content">
-    	<div align="center">
-        	<img src="beer.png">
-            <a data-role="button" id="teste" name="teste">Link button</a>
-        </div>	
-		<ul data-role="listview">
-			<li><a href="#page2">Iniciar nova cachaçada</a></li>
-            <li><a href="#page3">Últimas chachaçadas</a></li>
-		</ul>		
-	</div>
-	<div data-role="footer">
-		<h6>|nogatz|</h6>
-	</div>
-</div>
-
-<div data-role="page" id="page2">
-	<div data-role="header">
-		<h1>#cair com oq</h1>
-	</div>
-    <h6>Escolha a bebida(max. 3):</h6>
-	<div data-role="content">
-        <table border="1">	
-        	<tr>
-                <th>Item</th>
-                <th>Bebida</th>
-            </tr>
-        	<tr>
-        		<td><input type="checkbox" id="bebida"></td>
-                <td>Cerveja</td>
-            </tr>    
-        	<tr>
-        		<td><input type="checkbox" id="bebida2"></td>
-                <td>Vinho</td>
-            </tr>    
-        	<tr>
-        		<td><input type="checkbox" id="bebida3"></td>
-                <td>Tequila</td>
-            </tr>    
-        </table>
-	<div align="right">
-    	<a href="#soma">Comece >>></a>
-    </div>
-
-
-	</div>
-	<div data-role="footer" align="center">
-		<a href="#page"><h4>Voltar</h4></a>
-	</div>
-</div>
-
-<div data-role="page" id="page3">
-	<div data-role="header">
-		<h1>Ultimas..</h1>
-	</div>
-	<div data-role="content">	
-		<ul>
-        	<li>01/01/2015 - 40ml</li>
-        	<li>02/02/2015 - 50ml</li>
-        	<li>03/03/2015 - 60ml</li>
-        	<li>04/04/2015 - 70ml</li>                                    
-		</ul>
-
-	</div>
-	<div data-role="footer" align="center">
-		<a href="#page"><h4>Voltar</h4></a>
-	</div>
-</div>
-
-<div data-role="page" id="soma">
-	<div data-role="header">
-		<h1>bebendo..</h1>
-	</div>
-	<div data-role="content">	
-        <table border="1">	
-        	<tr>
-                <th>Até agora</th>
-                <th>Somar</th>
-            </tr>
-        	<tr>
-        		<td>3</td>
-                <td>+</td>
-            </tr>    
-        	<tr>
-        		<td>0</td>
-                <td>+</td>
-            </tr>    
-        	<tr>
-        		<td>2</td>
-                <td>+</td>
-            </tr>    
-        </table>
-	</div> 
-    <h4>>> Estou bebado, chega! <<< </h4>
-	<div data-role="footer" align="center">
-		<a href="#page"><h4>Voltar</h4></a>
-	</div>
-</div>
-
--->
 
 
