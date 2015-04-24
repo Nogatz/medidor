@@ -13,20 +13,24 @@
 	
 	var db;
 	function onDeviceReady(){
+			console.log("ondevice ready");
 			db = window.openDatabase("medidor", "1.0", "medidor", 2*1024*1024);
 			db.transaction(createDb, erroDB, successDB);
 		}
 
 	function createDb(tx){
+		console.log("create");
 			tx.executeSql('DROP TABLE IF EXISTS BEBIDAS');
 			tx.executeSql('CREATE TABLE IF NOT EXISTS BEBIDAS(nome,qtdalcool,litragem)');
 		}
 
 	function erroDB(err){
+		console.log("error db");
 			alert('Problema com o banco de dados' + err.code );
 		}
 
 	function successDB(){
+		console.log("sucesso db");
 			alert('Tudo certo, conectou' );
 		}
 
@@ -57,7 +61,7 @@
 		}
 
 	function submitform(){
-		alert("no submit");
+		console.log("teste2");
 		db.transaction(insertDB, erroDB);
 		$.mobile.changePage("#confirmacaocadastro", {reverse: false, transition:"slide"});
 		return false;
@@ -152,8 +156,8 @@
 		<p>Nova bebida:</p>
         <form method="post" onSubmit="return submitform()" id="novabebida" data-ajax="false">
     	<input type="text" name="textinput-fc" id="nome-bebida" placeholder="Nome" value="">
-    	<input type="text" name="textinput-fc" id="qdt-alcool" placeholder="porcentagem de alcool" value="">
-    	<input type="text" name="textinput-fc" id="litragem-bebida" placeholder="litragem da bebida em ml" value="">
+    	<input type="text" name="textinput-fd" id="qdt-alcool" placeholder="porcentagem de alcool" value="">
+    	<input type="text" name="textinput-fe" id="litragem-bebida" placeholder="litragem da bebida em ml" value="">
 			<input type="submit" value="Cadastrar">
 		</form>
             <a href="#topo" class="ui-btn ui-btn-inline">voltar</a>
