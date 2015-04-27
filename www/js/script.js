@@ -4,20 +4,17 @@
 	var db;
 	function onDeviceReady(){
 			console.log("ondevice ready");
-			db = window.openDatabase("Medidor", "1.0", "medidorbd", 2*1024*1024);
-			//db = window.sqlitePlugin.openDatabase({"medidor" : "Dummy_DB"});
+			db = window.openDatabase("Medidor2", "1.0", "medidorbd2", 2*1024*1024);
 			db.transaction(createDb, erroCB, successCB);
 		}
 
 	function createDb(tx){
-			alert('Problema com o banco de dados no create');
 			tx.executeSql('DROP TABLE IF EXISTS BEBIDAS');
 			tx.executeSql('CREATE TABLE IF NOT EXISTS BEBIDAS(nome,qtdalcool,litragem)');
 
 		}
 
 	function erroCB(err){
-			console.log("error db" +  err.code);
 			alert('Problema com o banco de dados' + err.code );
 		}
 
@@ -33,26 +30,25 @@
 		var _litragem = $("[name='litragem-bebida']").val();		
 		var sql = 'INSERT INTO BEBIDAS(nome,qtdalcool,litragem) VALUES(?,?,?)';
 		tx.executeSql(sql, [_nome,_qtdalcool,_litragem], sucessQueryDB, erroCB);
+		alert("sql" + sql + " nome"+ _nome);
 		}
 		
-		var htmlstring="";
 	function renderList(tx, results){
+		alert("entrou no render list");
 			var htmlstring = '';
-			
 			var len = results.rows.length;
 					
 			for (var i=0; i<len; i++){
 				htmlstring += '<li>' + results.rows.item(i).nome + '<li>';
 				}
+			$('#listview').html(htmlstring);
+			$('#listview').listview('refresh');	
+		
 		}
-		
-	$('#ListView').html(htmlstring);
-	$('#ListView').listview('refresh');	
-		
-	function sucessQueryDB(){
-		alert("na função de successQuery");
-		tx.executeSql('SELECT * FROM BEBIDAS', [], renderList, erroCB);
 				
+	function sucessQueryDB(tx, results){
+		alert("success" + results.rows.lenght);
+		tx.executeSql('SELECT nome FROM BEBIDAS', [], renderList, erroCB);	
 		}
 
 	function submitform(){

@@ -105,14 +105,32 @@
 	<div role="main" class="ui-content">
 		<p>Nova bebida:</p>
         <form method="post" onSubmit="return submitform()" id="novabebida" data-ajax="false">
-    	<input type="text" name="textinput-fc" id="nome-bebida" placeholder="Nome" value="">
-    	<input type="text" name="textinput-fd" id="qdt-alcool" placeholder="porcentagem de alcool" value="">
-    	<input type="text" name="textinput-fe" id="litragem-bebida" placeholder="litragem da bebida em ml" value="">
+    	<input type="text" name="nome-bebida" id="nome-bebida" placeholder="Nome" value="">
+    	<input type="text" name="qdt-alcool" id="qdt-alcool" placeholder="porcentagem de alcool" value="">
+    	<input type="text" name="litragem-bebida" id="litragem-bebida" placeholder="litragem da bebida em ml" value="">
 			<input type="submit" value="Cadastrar" class="ui-btn ui-btn-b">
 		</form>
         <a href="#topo" class="ui-btn ui-btn-b">voltar</a>
 	</div><!-- /content -->
 </div><!-- /Fim página para adicionar nova bebida -->
+
+
+<!-- /Página de confirmação do cadastro -->
+<div data-role="page" id="confirmacaocadastro">
+	<div data-role="header">
+		<h1>Medidor alcoolico</h1>
+	</div><!-- /header -->
+	<div role="main" class="ui-content">
+		<div data-role="content">
+        	<div id="output">
+            	<ul id="listview">
+                </ul>
+            </div>
+        
+        </div>
+        <a href="#topo" class="ui-btn ui-btn-b">voltar</a>
+	</div><!-- /content -->
+</div><!-- /Fim página de confirmação do cadastro  -->
 
 
 <!-- /Página da listagem das últimas -->    
